@@ -9,15 +9,29 @@ function Product({ data, addToCart }) {
     return str.toUpperCase();
   };
   return (
-    <div key={data.title} className="product">
-      <img src={`${process.env.PUBLIC_URL}${data.img}`} alt={data.title} />
+      <div key={data.title} className="menu-item">
+      <div>
+      <img className="photo" src={`${process.env.PUBLIC_URL}${data.img}`} alt={data.title} />
       <Rating />
-      <h2>{UpperCase(data.title)}</h2>
-      <h2>{capitalizeFirst(data.category)}</h2>
-      <h2>${data.price}</h2>
-      <p>{data.desc}</p>
-      <button onClick={() => addToCart(data)}>Add to Cart</button>
+
+      </div>
+      
+      <div className="item-info">
+      <header>
+      <h4>{UpperCase(data.title)}</h4>
+      {/* <h4>{capitalizeFirst(data.category)}</h4> */}
+      <h4 className="price">${data.price}</h4>
+
+      </header>
+      
+      <p className="item-text">{data.desc}</p>
+      <button className="card-btn" onClick={() => addToCart(data)}>Add to Cart</button>
+
+      </div>
+      
     </div>
+
+    
   );
 }
 

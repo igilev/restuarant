@@ -32,33 +32,35 @@ function Cart({
             Remove all
           </h5>
         </div>
-        <div>
+        <div className="shoppingBag">
           {cartToShow.map((product) => (
             <div className="Cart-Items" key={product.id}>
               <div className="image-box">
                 <img
                   src={`${process.env.PUBLIC_URL}${product.img}`}
                   alt={product.title}
-                  className="img-cart"
+                  className="photo"
                 />
-                <Rating />
+          
               </div>
 
               <div className="about">
-                <h3 className="subtitle">{product.category}</h3>
-                <h1 className="title">{product.title}</h1>
+                <h5 className="subtitle">{product.category}</h5>
+                <h4 className="title">{product.title}</h4>
               </div>
               <div className="counter">
-                <div className="btn" onClick={() => addToCart(product)}>
+                <div className="btnCount" onClick={() => addToCart(product)}>
                   +
                 </div>
                 <div className="count">{findDuplicates(product, cart)}</div>
-                <div className="btn" onClick={() => minusOne(product)}>
+                <div className="btnCount" onClick={() => minusOne(product)}>
                   -
                 </div>
               </div>
-              <div className="prices">
-                <div className="amount">${product.price}</div>
+              <div className="price">
+                <div className="amount">
+                  <h4>${product.price}</h4>
+                  </div>
                 <div
                   className="remove"
                   onClick={() => removeSingle(product.id)}
@@ -76,7 +78,8 @@ function Cart({
               <div className="Subtotal">Sub-Total</div>
               <div className="items">Items: {cart.length}</div>
             </div>
-            <div className="total-amount">${totalAmount.toFixed(1)}</div>
+            <div className="total-amount">
+              <h3>${totalAmount.toFixed(1)}</h3></div>
           </div>
           <button className="button">Checkout</button>
         </div>

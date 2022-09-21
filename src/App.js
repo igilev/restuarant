@@ -1,6 +1,7 @@
 import React from 'react'
 import Product from './components/Product';
 import Cart from './components/Cart';
+import './App.css';
 
 
 
@@ -136,18 +137,30 @@ console.log(splicedArr2)
   render() {
     return (
       <>
-      <h2>Menu</h2>
-      
-        <button onClick={() => this.allProducts()}>All</button> 
+      <h2 className='title'>Menu</h2>
+      <div className='container'>
+         <div className='btn-left'>
+         <button className='filter-btn' onClick={() => this.allProducts()}>All</button> 
         {
-        this.state.allCategories.map(category => <button onClick={() => this.mealfilter(category)} key={category}>{category}</button>)
+        this.state.allCategories.map(category => <button className='filter-btn' onClick={() => this.mealfilter(category)} key={category}>{category}</button>)
         }
-            <input placeholder='search some dish' onKeyDown={(e) =>this.searchInput(e.target.value) }/>
+        </div>
+        <div className="btn-right">
+             <input placeholder='search some dish' onKeyDown={(e) =>this.searchInput(e.target.value) }/>
               <select value={this.state.sortValue} onChange={(e)=> this.sort(e.target.value)}>
                 <option value="none">None</option>
                 <option value="priceHighToLow">Price High to Low</option>
                 <option value="priceLowToHigh">Price Low To High</option>
              </select>
+        </div>
+
+      </div>
+    
+
+            
+
+      
+       
         
         <div className='menu'>
           {
