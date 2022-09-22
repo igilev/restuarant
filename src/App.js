@@ -2,6 +2,8 @@ import React from 'react'
 import Product from './components/Product';
 import Cart from './components/Cart';
 import './App.css';
+import './Navbar.css';
+import Navbar from './components/Navbar';
 
 
 
@@ -15,7 +17,8 @@ class App extends React.Component {
       cart: [],
       cartToShow: [],
       sortedProducts: [],
-      sortValue: "",
+      sortValue: "priceHighToLow",
+      isCartOpen: false,
     }
   }
   componentDidMount(){
@@ -88,17 +91,15 @@ class App extends React.Component {
 
   sort = (value) => {
     this.setState({sortValue: value});
-    const sortedLowToHigh = this.state.products.sort((a, b) => a.price - b.price)
-    const sortedHighToLow = this.state.products.sort((a, b) => b.price - a.price)
+
     if (this.state.sortValue === "priceHighToLow"){
+      const sortedLowToHigh = this.state.products.slice(0).sort((a, b) => a.price - b.price)
       this.setState({productsToShow: sortedLowToHigh})
     }else if (this.state.sortValue === "priceLowToHigh"){
+      const sortedHighToLow = this.state.products.slice(0).sort((a, b) => b.price - a.price)
       this.setState({productsToShow: sortedHighToLow})
 
-    }else if(this.state.sortValue === ""){
-      this.setState({productsToShow: this.state.products})
-
-    }
+    } 
   
   
 }
@@ -127,20 +128,29 @@ minusOne = (product) => {
 const indexOfProductCart = this.state.cart.indexOf(product)
 this.state.cart.splice(indexOfProductCart, 1)
 this.setState({cart: this.state.cart})
-const uniqueProducts = [...new Set(this.state.cart)];
 
+const uniqueProducts = [...new Set(this.state.cart)];
 
 this.setState({cartToShow: uniqueProducts})
 
 
+}
 
+cartOpener = () => {
+  this.setState({ isCartOpen: !this.state.isCartOpen })
+// console.log("clocked")
 }
   
 
   render() {
     return (
       <>
-      <h2 className='title'>Menu</h2>
+      <Navbar 
+      cart={this.state.cart}
+      cartOpener={()=> this.cartOpener()}
+      />
+      <h5 id='menu'>/</h5>
+      <h2 className='title' >Menu</h2>
       <div className='container'>
          <div className='btn-left'>
          <button className='filter-btn' onClick={() => this.allProducts()}>All</button> 
@@ -151,7 +161,7 @@ this.setState({cartToShow: uniqueProducts})
         <div className="btn-right">
              <input placeholder='search some dish' onKeyDown={(e) =>this.searchInput(e.target.value) }/>
               <select value={this.state.sortValue} onChange={(e)=> this.sort(e.target.value)}>
-                <option value="none">None</option>
+                {/* <option value="none">None</option> */}
                 <option value="priceHighToLow">Price High to Low</option>
                 <option value="priceLowToHigh">Price Low To High</option>
              </select>
@@ -172,14 +182,24 @@ this.setState({cartToShow: uniqueProducts})
           }
        </div>
 
-       <Cart 
-       cart={this.state.cart}
-       cartToShow={this.state.cartToShow}
-       removeAll={this.removeAllFromCart}
-       removeSingle={this.removeSingleFromCart}
-       addToCart={this.addToCart}
-       minusOne={this.minusOne}
-       />
+
+          {this.state.isCartOpen &&
+
+            <Cart 
+            cart={this.state.cart}
+            cartToShow={this.state.cartToShow}
+            removeAll={this.removeAllFromCart}
+            removeSingle={this.removeSingleFromCart}
+            addToCart={this.addToCart}
+            minusOne={this.minusOne}
+            isCartOpen={this.state.isCartOpen}
+            
+     
+            />
+
+          
+          }
+     
       </>
     )
   }

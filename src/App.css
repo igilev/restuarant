@@ -79,7 +79,7 @@ ul {
 a {
   text-decoration: none;
 }
-img:not(.logo) {
+img:not(.logo .img-cart) {
   width: 100%;
 }
 img {
@@ -171,12 +171,14 @@ Menu
 ===============
 */
 
+
 .menu {
   padding: 2rem 0;
 }
 .title {
+  
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 7rem;
   margin-bottom: 2rem;
 }
 /* .underline {
