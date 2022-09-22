@@ -2,6 +2,8 @@ import React from 'react'
 import Product from './components/Product';
 import Cart from './components/Cart';
 import './App.css';
+import './Navbar.css';
+import Navbar from './components/Navbar';
 
 
 
@@ -15,7 +17,8 @@ class App extends React.Component {
       cart: [],
       cartToShow: [],
       sortedProducts: [],
-      sortValue: "",
+      sortValue: "priceHighToLow",
+      isCartOpen: false,
     }
   }
   componentDidMount(){
@@ -50,6 +53,7 @@ class App extends React.Component {
 
   }
 
+
   generateID = () => {
     const id = Math.floor(Math.random() * 100000000);
     return id;
@@ -70,7 +74,7 @@ class App extends React.Component {
   }
 
   addToCart = (product) =>{
-    this.setState({cart: [...this.state.cart, product]})
+    this.setState({cart: [...this.state.cart, product]});
     if(this.state.cart.indexOf(product) < 0){
       this.setState({cartToShow: [...this.state.cartToShow, product]})
     }
@@ -87,17 +91,15 @@ class App extends React.Component {
 
   sort = (value) => {
     this.setState({sortValue: value});
+
     if (this.state.sortValue === "priceHighToLow"){
-      const sortedLowToHigh = this.state.products.sort((a, b) => a.price - b.price)
+      const sortedLowToHigh = this.state.products.slice(0).sort((a, b) => a.price - b.price)
       this.setState({productsToShow: sortedLowToHigh})
     }else if (this.state.sortValue === "priceLowToHigh"){
-      const sortedHighToLow = this.state.products.sort((a, b) => b.price - a.price)
+      const sortedHighToLow = this.state.products.slice(0).sort((a, b) => b.price - a.price)
       this.setState({productsToShow: sortedHighToLow})
 
-    }else if(this.state.sortValue === ""){
-      this.setState({productsToShow: this.state.products})
-
-    }
+    } 
   
   
 }
@@ -120,24 +122,35 @@ removeSingleFromCart = (id) =>{
 
 
 minusOne = (product) => {
+
+
+// const uniqueProducts = [...new Set(this.state.cart)];
 const indexOfProductCart = this.state.cart.indexOf(product)
-const indexOfProductCartToShow = this.state.cartToShow.indexOf(product)
-const splicedArr1 = [...this.state.cart.slice(indexOfProductCart, 1)]
-const splicedArr2 = [...this.state.cartToShow.slice(indexOfProductCartToShow, 1)]
-console.log(splicedArr1)
-console.log(splicedArr2)
-// this.setState({cart: splicedArr1})
-// this.setState({cartToShow: splicedArr2})
+this.state.cart.splice(indexOfProductCart, 1)
+this.setState({cart: this.state.cart})
+
+const uniqueProducts = [...new Set(this.state.cart)];
+
+this.setState({cartToShow: uniqueProducts})
 
 
+}
 
+cartOpener = () => {
+  this.setState({ isCartOpen: !this.state.isCartOpen })
+// console.log("clocked")
 }
   
 
   render() {
     return (
       <>
-      <h2 className='title'>Menu</h2>
+      <Navbar 
+      cart={this.state.cart}
+      cartOpener={()=> this.cartOpener()}
+      />
+      <h5 id='menu'>/</h5>
+      <h2 className='title' >Menu</h2>
       <div className='container'>
          <div className='btn-left'>
          <button className='filter-btn' onClick={() => this.allProducts()}>All</button> 
@@ -148,7 +161,7 @@ console.log(splicedArr2)
         <div className="btn-right">
              <input placeholder='search some dish' onKeyDown={(e) =>this.searchInput(e.target.value) }/>
               <select value={this.state.sortValue} onChange={(e)=> this.sort(e.target.value)}>
-                <option value="none">None</option>
+                {/* <option value="none">None</option> */}
                 <option value="priceHighToLow">Price High to Low</option>
                 <option value="priceLowToHigh">Price Low To High</option>
              </select>
@@ -169,14 +182,24 @@ console.log(splicedArr2)
           }
        </div>
 
-       <Cart 
-       cart={this.state.cart}
-       cartToShow={this.state.cartToShow}
-       removeAll={this.removeAllFromCart}
-       removeSingle={this.removeSingleFromCart}
-       addToCart={this.addToCart}
-       minusOne={this.minusOne}
-       />
+
+          {this.state.isCartOpen &&
+
+            <Cart 
+            cart={this.state.cart}
+            cartToShow={this.state.cartToShow}
+            removeAll={this.removeAllFromCart}
+            removeSingle={this.removeSingleFromCart}
+            addToCart={this.addToCart}
+            minusOne={this.minusOne}
+            isCartOpen={this.state.isCartOpen}
+            
+     
+            />
+
+          
+          }
+     
       </>
     )
   }

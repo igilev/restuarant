@@ -46,7 +46,7 @@ function Cart({
 
               <div className="about">
                 <h5 className="subtitle">{product.category}</h5>
-                <h4 className="title">{product.title}</h4>
+                <h4 className="title-cart">{product.title}</h4>
               </div>
               <div className="counter">
                 <div className="btnCount" onClick={() => addToCart(product)}>
@@ -79,7 +79,7 @@ function Cart({
               <div className="items">Items: {cart.length}</div>
             </div>
             <div className="total-amount">
-              <h3>${totalAmount.toFixed(1)}</h3></div>
+              <h3>${totalAmount.toFixed(2)}</h3></div>
           </div>
           <button className="button">Checkout</button>
         </div>

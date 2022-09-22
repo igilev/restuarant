@@ -12,7 +12,7 @@ function Product({ data, addToCart }) {
       <div key={data.title} className="menu-item">
       <div>
       <img className="photo" src={`${process.env.PUBLIC_URL}${data.img}`} alt={data.title} />
-      <Rating />
+      <Rating key={data.id}/>
 
       </div>
       
