@@ -50,6 +50,7 @@ class App extends React.Component {
 
   }
 
+
   generateID = () => {
     const id = Math.floor(Math.random() * 100000000);
     return id;
@@ -70,7 +71,7 @@ class App extends React.Component {
   }
 
   addToCart = (product) =>{
-    this.setState({cart: [...this.state.cart, product]})
+    this.setState({cart: [...this.state.cart, product]});
     if(this.state.cart.indexOf(product) < 0){
       this.setState({cartToShow: [...this.state.cartToShow, product]})
     }
@@ -87,11 +88,11 @@ class App extends React.Component {
 
   sort = (value) => {
     this.setState({sortValue: value});
+    const sortedLowToHigh = this.state.products.sort((a, b) => a.price - b.price)
+    const sortedHighToLow = this.state.products.sort((a, b) => b.price - a.price)
     if (this.state.sortValue === "priceHighToLow"){
-      const sortedLowToHigh = this.state.products.sort((a, b) => a.price - b.price)
       this.setState({productsToShow: sortedLowToHigh})
     }else if (this.state.sortValue === "priceLowToHigh"){
-      const sortedHighToLow = this.state.products.sort((a, b) => b.price - a.price)
       this.setState({productsToShow: sortedHighToLow})
 
     }else if(this.state.sortValue === ""){
@@ -120,14 +121,16 @@ removeSingleFromCart = (id) =>{
 
 
 minusOne = (product) => {
+
+
+// const uniqueProducts = [...new Set(this.state.cart)];
 const indexOfProductCart = this.state.cart.indexOf(product)
-const indexOfProductCartToShow = this.state.cartToShow.indexOf(product)
-const splicedArr1 = [...this.state.cart.slice(indexOfProductCart, 1)]
-const splicedArr2 = [...this.state.cartToShow.slice(indexOfProductCartToShow, 1)]
-console.log(splicedArr1)
-console.log(splicedArr2)
-// this.setState({cart: splicedArr1})
-// this.setState({cartToShow: splicedArr2})
+this.state.cart.splice(indexOfProductCart, 1)
+this.setState({cart: this.state.cart})
+const uniqueProducts = [...new Set(this.state.cart)];
+
+
+this.setState({cartToShow: uniqueProducts})
 
 
 
