@@ -11,5 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-
+.card {
+  margin: auto;
+  width: 500px;
+  margin-top: 20px;
+  box-shadow: -1px 11px 19px 15px rgba(94, 94, 77, 0.7);
+  -webkit-box-shadow: -1px 11px 19px 15px rgba(94, 94, 77, 0.7);
+  -moz-box-shadow: -1px 11px 19px 15px rgba(94, 94, 77, 0.7);
+}
