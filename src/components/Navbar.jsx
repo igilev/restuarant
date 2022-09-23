@@ -1,16 +1,18 @@
 import React from 'react';
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { BsFillCartFill } from "react-icons/bs";
-function Navbar( {cart, cartOpener} ) {
+import { BsXCircle } from "react-icons/bs";
+function Navbar( {cart, cartOpener, isCartOpen} ) {
 
    
 
 
     return (
         <div className='navbar'>
-                <a href="#menu">Menu</a>
+                <a className="nav-link" href="#menu">Menu</a>
             <div className='cart-icon' onClick={cartOpener}>
-              {cart.length > 0 ? <BsFillCartCheckFill size={35}/> :  <BsFillCartFill  size={35}/> } 
+              {isCartOpen ? <BsXCircle color={"white"} size={30}/> :
+              cart.length > 0 ? <BsFillCartCheckFill color={"white"} size={30}/> :  <BsFillCartFill  color={"white"} size={30}/> } 
                 
             </div>
             {cart.length > 0 && <p className='cart-amount'>{cart.length}</p>}

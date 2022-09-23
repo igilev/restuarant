@@ -11,6 +11,33 @@
     background-color: #c59d5f;
 }
 
+
+.cart-icon{
+    cursor: pointer;
+    transition: 0.2s;
+    opacity: 0.75;
+    
+}
+
+.cart-icon:hover{
+    transition: 0.2s;
+    opacity: 1;
+    
+}
+
+.nav-link{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.nav-link:hover{
+    padding-bottom: 3px;
+    transition: 0.2s;
+    border-bottom: 1px white solid;
+}
+
 .cart-amount{
     top: 10px;
     left: 98%;

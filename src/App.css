@@ -315,6 +315,10 @@ input,select{
   font-weight: 700;
   color: #2f3841;
 }
+
+.closer{
+  margin-left: 450px;
+}
 .Action {
   font-size: 14px;
   font-family: ‘Open Sans’;
@@ -323,6 +327,7 @@ input,select{
   cursor: pointer;
   border-bottom: 1px solid #e44c4c;
 }
+
 
 .Cart-Items {
   width: 90%;

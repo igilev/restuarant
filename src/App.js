@@ -148,14 +148,16 @@ cartOpener = () => {
       <Navbar 
       cart={this.state.cart}
       cartOpener={()=> this.cartOpener()}
+      isCartOpen={this.state.isCartOpen}
       />
+       
       <h5 id='menu'>/</h5>
       <h2 className='title' >Menu</h2>
       <div className='container'>
          <div className='btn-left'>
          <button className='filter-btn' onClick={() => this.allProducts()}>All</button> 
         {
-        this.state.allCategories.map(category => <button className='filter-btn' onClick={() => this.mealfilter(category)} key={category}>{category}</button>)
+          this.state.allCategories.map(category => <button className='filter-btn' onClick={() => this.mealfilter(category)} key={category}>{category}</button>)
         }
         </div>
         <div className="btn-right">
