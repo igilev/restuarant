@@ -555,8 +555,15 @@ input[type="radio"] {
   }
 }
 
-.btn-left, .btn-right{
-  flex: 0.7;
+.btn-left{
+  padding: 10px;
+  flex: 0.6;
+}
+
+.btn-right select,input{
+  font-size: 13px;
+  width: 160px;
+  height: 30px;
 }
 
 
