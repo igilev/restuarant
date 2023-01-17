@@ -5,6 +5,7 @@ import "./App.css";
 import "./Navbar.css";
 import Navbar from "./components/Navbar";
 import Slides from "./components/Slides";
+import Footer from "./components/Footer";
 
 class App extends React.Component {
   constructor() {
@@ -18,6 +19,7 @@ class App extends React.Component {
       sortedProducts: [],
       sortValue: "priceHighToLow",
       isCartOpen: false,
+      searchValue: "",
     };
   }
   componentDidMount() {
@@ -76,8 +78,9 @@ class App extends React.Component {
   };
 
   searchInput = (value) => {
+    if (!value) return this.allProducts();
     const filteredArray = this.state.products.filter((el) => {
-      return el.title.includes(value);
+      return el.title.includes(value.toLowerCase());
     });
     this.setState({ productsToShow: filteredArray });
   };
@@ -139,10 +142,13 @@ class App extends React.Component {
           isCartOpen={this.state.isCartOpen}
         />
 
-        <h5 id="menu"></h5>
-        <Slides />
-        <h2 className="title">Menu</h2>
-        <div className="container">
+        <h5>
+          <Slides />
+        </h5>
+        <h2 className="title" id="menu">
+          Menu
+        </h2>
+        <div className="sorting">
           <div className="btn-left">
             <button className="filter-btn" onClick={() => this.allProducts()}>
               All
@@ -159,8 +165,9 @@ class App extends React.Component {
           </div>
           <div className="btn-right">
             <input
+              className="input-search"
               placeholder="search some dish"
-              onKeyDown={(e) => this.searchInput(e.target.value)}
+              onChange={(e) => this.searchInput(e.target.value)}
             />
             <select
               value={this.state.sortValue}
@@ -172,6 +179,7 @@ class App extends React.Component {
             </select>
           </div>
         </div>
+        <div className="container"></div>
 
         <div className="menu">
           {this.state.productsToShow.map((product) => (
@@ -194,6 +202,7 @@ class App extends React.Component {
             isCartOpen={this.state.isCartOpen}
           />
         )}
+        <Footer />
       </>
     );
   }

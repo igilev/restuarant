@@ -4,7 +4,7 @@ import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.css";
 function Slide() {
   return (
-    <div className="card">
+    <div className="card ">
       <Carousel>
         <Carousel.Item interval={1000}>
           <img

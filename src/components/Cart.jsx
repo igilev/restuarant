@@ -1,5 +1,5 @@
 import React from "react";
-import Rating from "./Rating";
+import { BsFillPlusCircleFill, BsFillDashCircleFill } from "react-icons/bs";
 
 function Cart({
   cart,
@@ -28,9 +28,10 @@ function Cart({
       <div className="Cart-Container">
         <div className="Header">
           <h3 className="Heading">Shopping Cart</h3>
-          <h5 className="Action" onClick={() => removeAll()}>
+          {cart.length ?  <h5 className="Action" onClick={() => removeAll()}>
             Remove all
-          </h5>
+          </h5> : "" }
+         
         </div>
         <div className="shoppingBag">
           {cartToShow.map((product) => (
@@ -49,13 +50,12 @@ function Cart({
                 <h4 className="title-cart">{product.title}</h4>
               </div>
               <div className="counter">
-                <div className="btnCount" onClick={() => addToCart(product)}>
-                  +
-                </div>
+                
+                <BsFillPlusCircleFill className="quantity" onClick={() => addToCart(product)} color={"#c59d5f"} size={30} />
+                
                 <div className="count">{findDuplicates(product, cart)}</div>
-                <div className="btnCount" onClick={() => minusOne(product)}>
-                  -
-                </div>
+                
+                <BsFillDashCircleFill className="quantity" onClick={() => addToCart(product)} color={"#c59d5f"} size={30} />
               </div>
               <div className="price">
                 <div className="amount">
@@ -73,15 +73,14 @@ function Cart({
         </div>
 
         <div className="checkout">
-          <div className="total">
-            <div>
+          {/* <div className="total"> */}
               <div className="Subtotal">Sub-Total</div>
               <div className="items">Items: {cart.length}</div>
-            </div>
+            
             <div className="total-amount">
               <h3>${totalAmount.toFixed(2)}</h3></div>
-          </div>
-          <button className="button">Checkout</button>
+          {/* </div> */}
+          <button className="filter-btn checkout-btn">Checkout</button>
         </div>
       </div>
     </div>

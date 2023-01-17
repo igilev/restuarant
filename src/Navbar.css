@@ -1,14 +1,16 @@
 .navbar {
+  
   top: 0;
   width: 100%;
   padding-right: 20px;
-  position: fixed;
+  position: fixed !important;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end !important;
   align-items: center;
   gap: 30px;
   padding: 20px;
   background-color: #c59d5f;
+  z-index: 9999;
 }
 
 .cart-icon {
@@ -16,6 +18,7 @@
   transition: 0.2s;
   opacity: 0.75;
   margin-right: 20px;
+  position: relative;
 }
 
 .cart-icon:hover {
@@ -29,7 +32,7 @@
   color: white;
   font-weight: bold;
   transition: 0.2s;
-  font-size: 30px;
+  font-size: 20px !important;
   padding-left: 20px;
 }
 
@@ -40,8 +43,8 @@
 }
 
 .cart-amount {
-  top: 10px;
-  left: 98%;
+  top: 1px;
+  left: 77%;
   position: absolute;
   display: flex;
   justify-content: center;

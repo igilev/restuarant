@@ -12,12 +12,12 @@ function Navbar({ cart, cartOpener, isCartOpen }) {
         {isCartOpen ? (
           <BsXCircle color={"white"} size={30} />
         ) : cart.length > 0 ? (
-          <BsFillCartCheckFill color={"white"} size={40} />
+          <BsFillCartCheckFill color={"white"} size={30} />
         ) : (
-          <BsFillCartFill color={"white"} size={40} />
+          <BsFillCartFill color={"white"} size={30} />
         )}
-      </div>
       {cart.length > 0 && <p className="cart-amount">{cart.length}</p>}
+      </div>
     </div>
   );
 }
