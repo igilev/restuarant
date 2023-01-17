@@ -166,7 +166,7 @@ class App extends React.Component {
           <div className="btn-right">
             <input
               className="input-search"
-              placeholder="search some dish"
+              placeholder="Search some dish..."
               onChange={(e) => this.searchInput(e.target.value)}
             />
             <select

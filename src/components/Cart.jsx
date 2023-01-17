@@ -24,7 +24,7 @@ function Cart({
   }, 0);
 
   return (
-    <div className="header">
+    
       <div className="Cart-Container">
         <div className="Header">
           <h3 className="Heading">Shopping Cart</h3>
@@ -83,7 +83,7 @@ function Cart({
           <button className="filter-btn checkout-btn">Checkout</button>
         </div>
       </div>
-    </div>
+    
   );
 }
 

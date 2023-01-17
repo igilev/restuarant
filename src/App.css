@@ -187,7 +187,7 @@ Menu
 */
 
 .menu {
-  padding: 2rem 0;
+  padding: 20px 0;
 }
 .title {
   text-align: center;
@@ -206,19 +206,20 @@ Menu
   display: flex;
   justify-content: space-between;
 }
-.btn-left,
+/* .btn-left,
 .btn-right {
   margin: 0 3rem;
-}
+} */
 .filter-btn {
   background: transparent;
   border-color: var(--clr-gold);
-  font-size: 0.8rem;
+  font-size: 14px;
   text-transform: capitalize;
-  margin: 0 0.5rem;
-  letter-spacing: 1px;
+  margin: 5px;
+  /* letter-spacing: 1px; */
   border-radius: var(--radius);
-  padding: 0.39rem 0.9rem;
+ padding: 3px 7px;
+ text-align: center;
   color: var(--clr-gold);
   cursor: pointer;
   transition: 0.13s;
@@ -400,9 +401,7 @@ select {
 .title-cart {
   padding-top: 5px;
   margin-top: 5px;
-  line-height: 10px;
-  font-size: 22px;
-  line-height: normal;
+  /* font-size: 22px; */
   /* text-align: left; */
   font-family: 'Open Sans';
   font-weight: 800;
@@ -410,7 +409,6 @@ select {
 }
 .subtitle {
   
-  line-height: 10px;
   font-size: 18px;
   font-family: 'Open Sans';
   font-weight: 600;
@@ -556,14 +554,24 @@ input[type="radio"] {
 }
 
 .btn-left{
-  padding: 10px;
+  padding: 5px;
   flex: 0.6;
 }
 
-.btn-right select,input{
-  font-size: 13px;
-  width: 160px;
-  height: 30px;
+.btn-right {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 15px;
+}
+
+
+.quantity{
+  cursor: pointer;
+  
+}
+
+.quantity:hover{
+  opacity: 0.8;
 }
 
 
@@ -607,9 +615,29 @@ input[type="radio"] {
   .Cart-Container{
     height: 600px;
     /* width: 100%; */
-    width: 85%;
+    /* width: 85%; */
     left: 7%;
-    display: grid;
+    /* display: grid; */
+    width: 90%;
+  }
+
+  .Cart-Items{
+    /* flex: 1; */
+    flex: 0.8;
+    gap: 10px;
+  }
+
+  .title-cart,  .count, .remove, .quantity{
+    font-size: small !important;
+  }
+
+  .price h4{
+    font-size: small !important;
+  }
+
+  .subtitle, .title-cart{
+    font-size: 10px !important;
+    letter-spacing: normal;
   }
 
   
@@ -619,32 +647,24 @@ input[type="radio"] {
   .image-box{
     /* width: 100px; */
     /* height: 100%; */
-    /* width: 50px;
-    height: 50px; */
-    height: 100px;
-    width: 100px;
+    /* width: 50px; */
+    /* height: 50px; */
+    width: 70px;
   }
   .image-box img {
-    object-fit: cover;
+    /* object-fit: cover; */
     /* height: 50px !important; */
   }
 
   .quantity{
-    cursor: pointer;
-  }
-
-  .quantity:hover{
-    opacity: 0.8;
+    width: 15px;
   }
 
 
-  .title-cart{
-    font-size: 16px;
-  }
 
-  .subtitle{
-    font-size: 12px;
-  }
+ 
+
+ 
 
   /* .checkout{
     fon
