@@ -2,9 +2,9 @@ import React from "react";
 import Rating from "./Rating";
 
 function Product({ data, addToCart }) {
-  const capitalizeFirst = (str) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
+  // const capitalizeFirst = (str) => {
+  //   return str.charAt(0).toUpperCase() + str.slice(1);
+  // };
   const UpperCase = (str) => {
     return str.toUpperCase();
   };

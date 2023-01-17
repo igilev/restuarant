@@ -142,9 +142,9 @@ class App extends React.Component {
           isCartOpen={this.state.isCartOpen}
         />
 
-        <h5>
+        <div className="slider">
           <Slides />
-        </h5>
+        </div>
         <h2 className="title" id="menu">
           Menu
         </h2>

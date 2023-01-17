@@ -12,9 +12,9 @@ code {
     monospace;
 }
 .card {
-  margin-top: 80px !important;
+  margin-top: 180px !important;
   margin: auto;
-  width: 500px;
+  width: 400px ;
   margin-top: 20px;
   box-shadow: -1px 11px 19px 15px rgba(94, 94, 77, 0.7);
   -webkit-box-shadow: -1px 11px 19px 15px rgba(94, 94, 77, 0.7);
